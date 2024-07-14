@@ -6,7 +6,7 @@ import "@/app/_styles/globals.css";
 export default function RootLayout({ children }) {
   return (
     <html>
-      <body>
+      <body className="bg-slate-400">
         <header>
           <Logo />
           <Navigation />

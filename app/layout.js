@@ -1,4 +1,4 @@
-import Counter from "./components/Counter";
+import Counter from "./cabins/Counter";
 import Logo from "./components/Logo";
 import Navigation from "./components/Navigation";
 

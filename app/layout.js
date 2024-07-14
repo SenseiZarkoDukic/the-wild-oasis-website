@@ -1,6 +1,6 @@
 import Counter from "./cabins/Counter";
-import Logo from "./components/Logo";
-import Navigation from "./components/Navigation";
+import Logo from "./_components/Logo";
+import Navigation from "./_components/Navigation";
 
 export default function RootLayout({ children }) {
   return (

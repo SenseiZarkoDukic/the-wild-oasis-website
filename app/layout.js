@@ -9,7 +9,6 @@ export default function RootLayout({ children }) {
         <header>
           <Logo />
           <Navigation />
-          <Counter />
         </header>
         <main>{children}</main>
         <footer>&copy; 2021 Wild Oasis &bull; All rights reserved</footer>

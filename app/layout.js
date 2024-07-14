@@ -6,7 +6,7 @@ import "@/app/_styles/globals.css";
 export default function RootLayout({ children }) {
   return (
     <html>
-      <body className="bg-blue-900 text-gray-50 min-h-screen">
+      <body className="bg-primary-950 text-primary-100 min-h-screen">
         <header>
           <Logo />
           <Navigation />

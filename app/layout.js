@@ -25,10 +25,12 @@ export default function RootLayout({ children }) {
   return (
     <html>
       <body
-        className={`${josefin.className} bg-primary-950 text-primary-100 min-h-screen`}
+        className={`${josefin.className} bg-primary-950 text-primary-100 min-h-screen flex flex-col`}
       >
         <Header />
-        <main>{children}</main>
+        <div className="flex-1">
+          <main className="max-w-7xl mx-auto bg-red-500">{children}</main>
+        </div>
       </body>
     </html>
   );

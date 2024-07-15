@@ -29,7 +29,6 @@ export default function RootLayout({ children }) {
       >
         <Header />
         <main>{children}</main>
-        <footer>&copy; 2021 Wild Oasis &bull; All rights reserved</footer>
       </body>
     </html>
   );

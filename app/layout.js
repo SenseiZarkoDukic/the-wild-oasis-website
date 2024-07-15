@@ -9,6 +9,8 @@ const josefin = Josefin_Sans({
   display: "swap",
 });
 
+console.log(josefin);
+
 export const metadata = {
   title: {
     template: "%s / The Wild Oasis",
@@ -21,7 +23,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html>
-      <body className="bg-primary-950 text-primary-100 min-h-screen">
+      <body
+        className={`${josefin.className} bg-primary-950 text-primary-100 min-h-screen`}
+      >
         <header>
           <Logo />
           <Navigation />

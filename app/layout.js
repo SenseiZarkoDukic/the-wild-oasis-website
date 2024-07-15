@@ -4,7 +4,6 @@ import Navigation from "@/app/_components/Navigation";
 import "@/app/_styles/globals.css";
 
 export const metadata = {
-  // title: "The Wild Oasis",
   title: {
     template: "%s / The Wild Oasis",
     default: "Welcome / The Wild Oasis",

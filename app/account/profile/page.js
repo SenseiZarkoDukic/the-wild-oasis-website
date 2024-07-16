@@ -37,9 +37,8 @@ export default function Page() {
         <div className="space-y-2">
           <div className="flex items-center justify-between relative">
             <label htmlFor="nationality">Where are you from?</label>
-            <Image
+            <a
               src={countryFlag}
-              fill
               alt="Country flag"
               className="h-5 rounded-sm"
             />

@@ -1,6 +1,9 @@
-import CabinList from "@/app/_components/CabinList";
 import { Suspense } from "react";
-import Spinner from "@/app/_components/Spinner";
+import Spinner from "../_components/Spinner";
+import dynamic from "next/dynamic";
+const CabinList = dynamic(() => import("../_components/CabinList"), {
+  ssr: false,
+});
 
 export const metadata = {
   title: "Cabins",

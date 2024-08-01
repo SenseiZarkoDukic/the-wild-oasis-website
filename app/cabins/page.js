@@ -29,7 +29,7 @@ export default function Page({ searchParams }) {
         Welcome to paradise.
       </p>
       <div className="flex justify-end mb-8">
-        <Filter />
+        <Filter filter={filter} />
       </div>
       <Suspense fallback={<Spinner />} key={filter}>
         <CabinList filter={filter} />

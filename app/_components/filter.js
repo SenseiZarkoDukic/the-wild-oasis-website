@@ -1,8 +1,19 @@
 "use client";
 
+import { useRouter, useSearchParams } from "next/navigation";
+
 function Filter() {
+  const searchParams = useSearchParams();
+  const router = useRouter();
+
   function handleFilter(filter) {
-    console.log(filter);
+    const params = new URLSearchParams(searchParams);
+    if (filter === "all") {
+      params.delete("capacity");
+    } else {
+      params.set("capacity", filter);
+    }
+    router.replace(`?${params.toString()}`);
   }
   return (
     <div className="border border-primary-800 flex">

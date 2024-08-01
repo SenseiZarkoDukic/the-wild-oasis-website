@@ -38,9 +38,6 @@ export async function getCabinPrice(id) {
 }
 
 export async function getCabins() {
-  // For testing
-  // await new Promise((res) => setTimeout(res, 2000));
-
   const { data, error } = await supabase
     .from("cabins")
     .select("id, name, maxCapacity, regularPrice, discount, image")
@@ -50,6 +47,8 @@ export async function getCabins() {
     console.error(error);
     throw new Error("Cabins could not be loaded");
   }
+  // // For testing
+  // await new Promise((res) => setTimeout(res, 2000));
 
   return data;
 }

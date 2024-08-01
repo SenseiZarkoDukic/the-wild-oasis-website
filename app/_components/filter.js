@@ -1,10 +1,11 @@
 "use client";
 
-import { useRouter, useSearchParams } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 function Filter() {
   const searchParams = useSearchParams();
   const router = useRouter();
+  const pathname = usePathname();
 
   function handleFilter(filter) {
     const params = new URLSearchParams(searchParams);
@@ -13,7 +14,7 @@ function Filter() {
     } else {
       params.set("capacity", filter);
     }
-    router.replace(`?${params.toString()}`);
+    router.replace(`${pathname}?${params.toString()}`, { scroll: false });
   }
   return (
     <div className="border border-primary-800 flex">

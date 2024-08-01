@@ -1,6 +1,6 @@
 "use client";
 
-function filter() {
+function Filter() {
   return (
     <div className="border border-primary-800 flex">
       <button className="px-5 py-5 hover:bg-primary-700">All cabins</button>
@@ -17,4 +17,4 @@ function filter() {
   );
 }
 
-export default filter;
+export default Filter;

@@ -20,25 +20,33 @@ function Filter({ filter }) {
     <div className="border border-primary-800 flex">
       <button
         onClick={() => handleFilter("all")}
-        className="px-5 py-5 hover:bg-primary-700"
+        className={`px-5 py-5 hover:bg-primary-700 ${
+          filter === "all" ? "bg-primary-700" : ""
+        }`}
       >
         All cabins
       </button>
       <button
         onClick={() => handleFilter("small")}
-        className="px-5 py-5 hover:bg-primary-700"
+        className={`px-5 py-5 hover:bg-primary-700 ${
+          filter === "small" ? "bg-primary-700" : ""
+        }`}
       >
         1&mdash;3 guests
       </button>
       <button
         onClick={() => handleFilter("medium")}
-        className="px-5 py-5 hover:bg-primary-700"
+        className={`px-5 py-5 hover:bg-primary-700 ${
+          filter === "medium" ? "bg-primary-700" : ""
+        }`}
       >
         4&mdash;7 guests
       </button>
       <button
         onClick={() => handleFilter("large")}
-        className="px-5 py-5 hover:bg-primary-700"
+        className={`px-5 py-5 hover:bg-primary-700 ${
+          filter === "large" ? "bg-primary-700" : ""
+        }`}
       >
         8&mdash;12 guests
       </button>

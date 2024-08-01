@@ -1,6 +1,12 @@
 import Image from "next/image";
 import about1 from "@/public/about-1.jpg";
 import about2 from "@/public/about-2.jpg";
+import CabinNumber from "../_components/CabinNumber";
+import { Suspense } from "react";
+import SpinnerMini from "../_components/SpinnerMini";
+
+export const revalidate = 3600;
+
 export const metadata = {
   title: "About",
 };
@@ -22,10 +28,14 @@ export default function Page() {
             and enjoying simple pleasures with family.
           </p>
           <p>
-            Our 8 luxury cabins provide a cozy base, but the real freedom and
-            peace you&apos;ll find in the surrounding mountains. Wander through
-            lush forests, breathe in the fresh air, and watch the stars twinkle
-            above from the warmth of a campfire or your hot tub.
+            Our
+            <Suspense fallback={<SpinnerMini />}>
+              <CabinNumber />
+            </Suspense>
+            luxury cabins provide a cozy base, but the real freedom and peace
+            you&apos;ll find in the surrounding mountains. Wander through lush
+            forests, breathe in the fresh air, and watch the stars twinkle above
+            from the warmth of a campfire or your hot tub.
           </p>
           <p>
             This is where memorable moments are made, surrounded by

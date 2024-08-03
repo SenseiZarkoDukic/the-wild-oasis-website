@@ -93,7 +93,7 @@ export default async function Page({ params }) {
           Reserve {name} today. Pay on arrival.
         </h2>
 
-        <div>
+        <div className="grid grid-cols-2 border border-primary-800 min-h-[400px]">
           <DateSelector />
           <ReservationForm />
         </div>

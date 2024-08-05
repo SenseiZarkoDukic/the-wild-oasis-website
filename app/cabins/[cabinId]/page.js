@@ -1,7 +1,12 @@
 import DateSelector from "@/app/_components/DateSelector";
 import ReservationForm from "@/app/_components/ReservationForm";
 import TextExpander from "@/app/_components/TextExpander";
-import { getCabin, getCabins, getSettings } from "@/app/_lib/data-service";
+import {
+  getBookedDatesByCabinId,
+  getCabin,
+  getCabins,
+  getSettings,
+} from "@/app/_lib/data-service";
 import { EyeSlashIcon, MapPinIcon, UsersIcon } from "@heroicons/react/24/solid";
 import Image from "next/image";
 
@@ -43,6 +48,7 @@ export default async function Page({ params }) {
     await getCabin(params.cabinId);
 
   const settings = await getSettings();
+  const bookedDates = await getBookedDatesByCabinId(params.cabinId);
 
   return (
     <div className="max-w-6xl mx-auto mt-8">

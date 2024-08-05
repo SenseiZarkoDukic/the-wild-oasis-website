@@ -1,7 +1,7 @@
 import DateSelector from "@/app/_components/DateSelector";
 import ReservationForm from "@/app/_components/ReservationForm";
 import TextExpander from "@/app/_components/TextExpander";
-import { getCabin, getCabins } from "@/app/_lib/data-service";
+import { getCabin, getCabins, getSettings } from "@/app/_lib/data-service";
 import { EyeSlashIcon, MapPinIcon, UsersIcon } from "@heroicons/react/24/solid";
 import Image from "next/image";
 
@@ -41,6 +41,8 @@ export async function generateStaticParams() {
 export default async function Page({ params }) {
   const { id, name, maxCapacity, regularPrice, discount, image, description } =
     await getCabin(params.cabinId);
+
+  const settings = await getSettings();
 
   return (
     <div className="max-w-6xl mx-auto mt-8">

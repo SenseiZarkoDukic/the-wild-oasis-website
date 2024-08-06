@@ -43,12 +43,14 @@ export async function generateStaticParams() {
 }
 
 export default async function Page({ params }) {
+  const [cabin, settings, bookedDates] = await Promise.all([
+    getCabin(params.cabinId),
+    getSettings(),
+    getBookedDatesByCabinId(params.cabinId),
+  ]);
+
   const { id, name, maxCapacity, regularPrice, discount, image, description } =
-    await getCabin(params.cabinId);
-
-  const settings = await getSettings();
-  const bookedDates = await getBookedDatesByCabinId(params.cabinId);
-
+    cabin;
   return (
     <div className="max-w-6xl mx-auto mt-8">
       <div className="grid grid-cols-[3fr_4fr] gap-20 border border-primary-800 py-3 px-10 mb-24">

@@ -1,6 +1,6 @@
 "use client";
 
-import { isWithinInterval } from "date-fns";
+import { isWithinInterval, set } from "date-fns";
 import { DayPicker } from "react-day-picker";
 import "react-day-picker/dist/style.css";
 
@@ -31,8 +31,9 @@ function DateSelector({ settings, bookedDates, cabin }) {
         className="pt-12 place-self-center"
         mode="range"
         onSelect={(range) => {
-          console.log(range);
+          setRange(range);
         }}
+        selected={range}
         min={minBookingLength + 1}
         max={maxBookingLength}
         fromMonth={new Date()}

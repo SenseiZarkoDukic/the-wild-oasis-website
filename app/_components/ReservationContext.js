@@ -24,4 +24,4 @@ function useReservation() {
   return context;
 }
 
-export { ReservationContext, ReservationProvider };
+export { ReservationContext, ReservationProvider, useReservation };

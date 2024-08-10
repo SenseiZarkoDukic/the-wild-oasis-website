@@ -8,9 +8,21 @@ export async function GET(request, { params }) {
       getCabin(cabinId),
       getBookedDatesByCabinId(cabinId),
     ]);
+
+    if (!cabin) {
+      return NextResponse.json({ message: "Cabin not found" }, { status: 404 });
+    }
+
     return NextResponse.json({ cabin, bookedDates });
   } catch (error) {
-    return NextResponse.json({ message: error.message }, 500);
+    // Log the error (optional)
+    console.error("Error querying the database:", error);
+
+    // Return a 500 status code with the error message
+    return NextResponse.json(
+      { message: "Internal Server Error", details: error.message },
+      { status: 500 }
+    );
   }
 }
 

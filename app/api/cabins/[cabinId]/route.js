@@ -1,4 +1,5 @@
 import { getBookedDatesByCabinId, getCabin } from "@/app/_lib/data-service";
+import { NextResponse } from "next/server";
 
 export async function GET(request, { params }) {
   const { cabinId } = params;
@@ -7,9 +8,9 @@ export async function GET(request, { params }) {
       getCabin(cabinId),
       getBookedDatesByCabinId(cabinId),
     ]);
-    return Response.json(cabin, bookedDates);
-  } catch {
-    return Response.json({ message: "Cabin not found" });
+    return NextResponse.json({ cabin, bookedDates });
+  } catch (error) {
+    return NextResponse.json({ message: error.message }, 500);
   }
 }
 

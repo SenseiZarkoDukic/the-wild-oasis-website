@@ -2,6 +2,7 @@
 
 import { signIn } from "./auth";
 
-export default async function signInAction() {
-  await signIn();
+export async function signInAction(formData) {
+  const provider = formData.get("provider");
+  await signIn(provider, { redirectTo: "/account" });
 }

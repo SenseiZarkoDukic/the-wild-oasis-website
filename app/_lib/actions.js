@@ -1,9 +1,14 @@
 "use server";
 
-import { signIn, signOut } from "./auth";
+import { auth, signIn, signOut } from "./auth";
 
 export async function updateGuest(formData) {
-  console.log(formData);
+  const session = await auth();
+
+  if (!session)
+    throw new Error("You need to be signed in to update your profile.");
+
+  const nationalID = formData.get("nationalID");
 }
 
 export async function signInAction() {

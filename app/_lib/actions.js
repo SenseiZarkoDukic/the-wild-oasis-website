@@ -2,8 +2,8 @@
 
 import { signIn, signOut } from "./auth";
 
-export async function updateGuest() {
-  console.log("Server action: updateProfile");
+export async function updateGuest(formData) {
+  console.log(formData);
 }
 
 export async function signInAction() {

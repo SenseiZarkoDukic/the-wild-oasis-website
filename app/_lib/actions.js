@@ -9,6 +9,10 @@ export async function updateGuest(formData) {
     throw new Error("You need to be signed in to update your profile.");
 
   const nationalID = formData.get("nationalID");
+  const [nationality, countryFlag] = formData.get("nationality").split("%");
+
+  if (!/^[a-z-Z0-9]{6,12}$/.test(nationalID))
+    throw new Error("Please provide a valid national ID.");
 }
 
 export async function signInAction() {

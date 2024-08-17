@@ -33,7 +33,7 @@ export default async function Navigation() {
                 src={session.user.image}
                 className="w-8 h-8 rounded-full"
                 alt={session?.user?.name}
-                refferrerPolicy="no-referrer"
+                refferrerpolicy="no-referrer"
               />
               <span>Guest area</span>
             </Link>

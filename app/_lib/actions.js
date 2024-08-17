@@ -4,6 +4,7 @@ import { auth, signIn, signOut } from "./auth";
 
 export async function updateGuest(formData) {
   const session = await auth();
+  const id = session?.user?.guestId;
 
   if (!session)
     throw new Error("You need to be signed in to update your profile.");
@@ -20,7 +21,18 @@ export async function updateGuest(formData) {
     nationalID,
   };
 
-  console.log(updateData);
+  const { data, error } = await supabase
+    .from("guests")
+    .update(updateData)
+    .eq("id", id)
+    .select()
+    .single();
+
+  if (error) {
+    console.error(error);
+    throw new Error("Guest could not be updated");
+  }
+  return data;
 }
 
 export async function signInAction() {

@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { updateGuest } from "../_lib/actions";
 
 function UpdateProfileForm({ children, guest }) {
   const [count, setCount] = useState(0);
@@ -7,7 +8,10 @@ function UpdateProfileForm({ children, guest }) {
   const { fullName, email, countryFlag, nationality, nationalID } = guest;
 
   return (
-    <form className="bg-primary-900 py-8 px-12 text-lg flex gap-6 flex-col">
+    <form
+      action={updateGuest}
+      className="bg-primary-900 py-8 px-12 text-lg flex gap-6 flex-col"
+    >
       <div className="space-y-2">
         <label>Full name</label>
         <input

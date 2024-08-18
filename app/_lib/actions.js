@@ -1,6 +1,7 @@
 "use server";
 
 import { auth, signIn, signOut } from "./auth";
+import { supabase } from "./supabase";
 
 export async function updateGuest(formData) {
   const session = await auth();
@@ -24,15 +25,12 @@ export async function updateGuest(formData) {
   const { data, error } = await supabase
     .from("guests")
     .update(updateData)
-    .eq("id", id)
-    .select()
-    .single();
+    .eq("id", id);
 
   if (error) {
     console.error(error);
     throw new Error("Guest could not be updated");
   }
-  return data;
 }
 
 export async function signInAction() {

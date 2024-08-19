@@ -38,6 +38,7 @@ export async function updateGuest(formData) {
 }
 
 export async function deleteReservation(bookingId) {
+  
   const session = await auth();
 
   if (!session)

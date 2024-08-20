@@ -1,7 +1,18 @@
-export default function Page() {
-  // CHANGE
-  const reservationId = 23;
-  const maxCapacity = 23;
+import { auth } from "@/app/_lib/auth";
+import { getBooking, getCabin } from "@/app/_lib/data-service";
+
+export default async function Page({ params }) {
+  const session = await auth();
+
+  const id = params.id;
+
+  const booking = await getBooking(id);
+  const cabin = await getCabin(booking?.cabinId);
+  console.log(cabin);
+  console.log(booking);
+
+  const reservationId = id;
+  const maxCapacity = cabin?.maxCapacity;
 
   return (
     <div>

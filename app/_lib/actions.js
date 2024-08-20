@@ -38,7 +38,7 @@ export async function updateGuest(formData) {
   revalidatePath("/account/profile");
 }
 
-export async function editReservation(formData) {
+export async function updateReservation(formData) {
   const session = await auth();
 
   if (!session)
@@ -46,15 +46,14 @@ export async function editReservation(formData) {
 
   const guestBookings = await getBookings(session?.user?.guestId);
   const guestBookingIds = guestBookings.map((booking) => booking?.id);
-  console.log(guestBookingIds);
+
   const bookingId = Number(formData.get("id"));
-  console.log(`this is the exact booking ID:`, bookingId);
 
   if (!guestBookingIds.includes(bookingId))
     throw new Error("You can only edit your own reservations.");
 
-  const numGuests = formData.get("numGuests");
-  const observations = formData.get("observations");
+  const numGuests = Number(formData.get("numGuests"));
+  const observations = formData.get("observations").slice(0, 1000);
 
   const updateData = {
     numGuests,

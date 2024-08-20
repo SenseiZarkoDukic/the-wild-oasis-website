@@ -1,6 +1,6 @@
 "use client";
 
-import { editReservation } from "../_lib/actions";
+import { updateReservation } from "../_lib/actions";
 import { useFormStatus } from "react-dom";
 
 function UpdateReservationForm({ booking, cabin }) {
@@ -9,11 +9,10 @@ function UpdateReservationForm({ booking, cabin }) {
 
   return (
     <form
-      action={editReservation}
+      action={updateReservation}
       className="bg-primary-900 py-8 px-12 text-lg flex gap-6 flex-col"
     >
       <div className="space-y-2">
-        <label htmlFor="id">Reservation ID</label>
         <input
           hidden
           defaultValue={id}

@@ -39,11 +39,14 @@ export async function updateGuest(formData) {
 }
 
 export async function updateReservation(formData) {
+  // 1) Authentication
+
   const session = await auth();
 
   if (!session)
     throw new Error("You need to be signed in to edit a reservation.");
 
+  // 2) Authorization
   const guestBookings = await getBookings(session?.user?.guestId);
   const guestBookingIds = guestBookings.map((booking) => booking?.id);
 
@@ -52,6 +55,7 @@ export async function updateReservation(formData) {
   if (!guestBookingIds.includes(bookingId))
     throw new Error("You can only edit your own reservations.");
 
+  // 3) Building the update data
   const numGuests = Number(formData.get("numGuests"));
   const observations = formData.get("observations").slice(0, 1000);
 
@@ -60,6 +64,7 @@ export async function updateReservation(formData) {
     observations,
   };
 
+  // 4) Mutation
   const { error } = await supabase
     .from("bookings")
     .update(updateData)
@@ -67,12 +72,16 @@ export async function updateReservation(formData) {
     .select()
     .single();
 
+  // 5) Error handling
   if (error) {
     console.error(error);
     throw new Error("Booking could not be updated");
   }
 
+  // 6) Revalidation
   revalidatePath(`/account/reservations/edit/${bookingId}`);
+
+  // 7) Redirect
   redirect("/account/reservations");
 }
 

@@ -22,11 +22,14 @@ function isAlreadyBooked(range, datesArr) {
 
 function DateSelector({ settings, bookedDates, cabin }) {
   const { range, setRange, resetRange } = useReservation();
+
   const displayRange = isAlreadyBooked(range, bookedDates) ? {} : range;
+
+  console.log(displayRange);
   const { regularPrice, discount } = cabin;
 
   const numNights = differenceInDays(displayRange?.to, displayRange?.from);
-  console.log(bookedDates);
+
   const cabinPrice = numNights * (regularPrice - discount);
 
   const currentYear = new Date().getFullYear();
@@ -39,7 +42,7 @@ function DateSelector({ settings, bookedDates, cabin }) {
         className="pt-12 place-self-center"
         mode="range"
         onSelect={setRange}
-        selected={range}
+        selected={displayRange}
         min={minBookingLength + 1}
         max={maxBookingLength}
         startMonth={new Date()}

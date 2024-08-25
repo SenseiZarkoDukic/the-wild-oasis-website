@@ -2,7 +2,7 @@
 
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
-function Filter() {
+export default function Filter() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const pathname = usePathname();
@@ -63,5 +63,3 @@ function Button({ filter, activeFilter, handleFilter, children }) {
     </button>
   );
 }
-
-export default Filter;

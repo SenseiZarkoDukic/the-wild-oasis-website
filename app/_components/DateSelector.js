@@ -25,7 +25,6 @@ function DateSelector({ settings, bookedDates, cabin }) {
 
   const displayRange = isAlreadyBooked(range, bookedDates) ? {} : range;
 
-  console.log(displayRange);
   const { regularPrice, discount } = cabin;
 
   const numNights = differenceInDays(displayRange?.to, displayRange?.from);

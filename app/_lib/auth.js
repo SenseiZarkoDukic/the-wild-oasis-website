@@ -9,6 +9,7 @@ const authConfig = {
       clientSecret: process.env.AUTH_GOOGLE_SECRET,
     }),
   ],
+  trustHost: true,
   secret: process.env.NEXTAUTH_SECRET,
   callbacks: {
     authorized({ auth, request }) {
